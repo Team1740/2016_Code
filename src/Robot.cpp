@@ -4,8 +4,7 @@
 #include "Commands/Command.h"
 #include "Commands/Move.h"
 #include "Commands/StandardTankDrive.h"
-#include "Commands/MecanumTankDrive.h"
-#include "Commands/ThreeAxisDrive.h"
+#include "Commands/ThreeAxisTankDrive.h"
 #include "Commands/XBoxDrive.h"
 #include "CommandBase.h"
 
@@ -42,8 +41,7 @@ private:
 
 		drivemodechooser = new SendableChooser();
 		drivemodechooser->AddObject("Standard Tank Drive", new StandardTankDrive());
-		drivemodechooser->AddObject("2 Joystick Mecanum", new MecanumTankDrive());
-		drivemodechooser->AddDefault("3 Axis Drive (1 Joystick)", new ThreeAxisDrive());
+		drivemodechooser->AddDefault("3 Axis Tank Drive (1 Joystick)", new ThreeAxisTankDrive());
 		drivemodechooser->AddObject("3 Axis Xbox Drive", new XBoxDrive());
 		SmartDashboard::PutData("Drive Mode", drivemodechooser);
 

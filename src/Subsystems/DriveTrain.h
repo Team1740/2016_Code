@@ -6,12 +6,12 @@
 class DriveTrain: public Subsystem
 {
 public:
-	Victor *front_right_motor;
-	Victor *front_left_motor;
-	Victor *rear_right_motor;
-	Victor *rear_left_motor;
+	TalonSRX *leftMotor1;
+	TalonSRX *leftMotor2;
+	TalonSRX *rightMotor1;
+	TalonSRX *rightMotor2;
 	DriveTrain();
-	void Go(float, float, float, float);
+	void Go(float, float);
 	void Stop();
 };
 
