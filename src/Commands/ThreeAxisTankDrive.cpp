@@ -15,35 +15,33 @@ void ThreeAxisTankDrive::Execute()
 
 	// The drivetrain->Go() method has built in handling for reversing motors on the left side...
 
-	float x = 0, t = 0; // floats for the axes x, twist
-	float fl = 0, fr = 0, rl = 0, rr = 0; // floats for the motor outputs
+	float y = 0, t = 0; // floats for the axes x, twist
+	float l = 0, r = 0; // floats for the motor outputs
 
-	if (oi->threeAxisJoystick->GetX() > DEADBAND_XAXIS || oi->threeAxisJoystick->GetX() < -DEADBAND_XAXIS)  // Deadband
+	if (oi->threeAxisJoystick->GetY() > DEADBAND_YAXIS || oi->threeAxisJoystick->GetY() < -DEADBAND_YAXIS)  // Deadband
 	{
-		x = oi->threeAxisJoystick->GetX();
+		y = oi->threeAxisJoystick->GetY();
 	}
 	if (oi->threeAxisJoystick->GetTwist() > DEADBAND_TWIST || oi->threeAxisJoystick->GetTwist() < -DEADBAND_TWIST)  // Deadband
 	{
 		t = SCALE_TWIST  * oi->threeAxisJoystick->GetTwist();
 	}
-	fl = t + x; // Front Left Wheel
-	fr = - t - x; // Front Right Wheel
-	rl = t - x; // Rear Left Wheel
-	rr = - t + x; // Rear Right Wheel
-
+	l = -y + t;
+	r = y + t;
 #if (DEBUG_LEVEL == 4) // CRE Not sure if this is legit
 
-	if (gfl!=fl || gfr!=fr || grl!=rl || grr!=rr) // Only log the movement if something changed
+	if (gl!=l || gr!=r) // Only log the movement if something changed
 	{
-		gfl=fl; gfr=fr; grl=rl; grr=rr;
+		gl=l;
+		gr=r;
 		char *data = new char[128];
-		sprintf(data, "We're moving: %2.1f, %2.1f, %2.1f, %2.1f; X=%2.1f, Twist=%2.1f", fl, fr, rl, rr, x, t);
+		sprintf(data, "We're moving: %2.1f, %2.1f, Y=%2.1f, Twist=%2.1f", l, r, y, t);
 		datalogger->Log(data, DEBUG_MESSAGE);
 	}
 
 #endif
 
-	drivetrain->Go(fl,fr,rl,rr);
+	drivetrain->Go(l, r);
 
 }
 

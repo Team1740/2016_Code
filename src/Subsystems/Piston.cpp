@@ -2,8 +2,8 @@
 
 Piston::Piston() : Subsystem("Piston")
 {
-	s0 = new Solenoid(CYLINDER_PORT0);
-	s1 = new Solenoid(CYLINDER_PORT1);
+	s0 = new Solenoid(CYLINDER_PORT_0);
+	s1 = new Solenoid(CYLINDER_PORT_1);
 	isOpen = true;
 }
 

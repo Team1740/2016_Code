@@ -14,10 +14,10 @@ void XBoxDrive::Initialize()
 
 void XBoxDrive::Execute(){
 	datalogger->Log("XBoxDrive::Execute()", VERBOSE_MESSAGE);
-	drivetrain->front_left_motor->Set(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0) + oi->xboxController->GetRawAxis(4));
-	drivetrain->front_right_motor->Set(-(oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(0) - oi->xboxController->GetRawAxis(4)));
-	drivetrain->rear_left_motor->Set(-(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0) - oi->xboxController->GetRawAxis(4)));
-	drivetrain->rear_right_motor->Set(oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(0) + oi->xboxController->GetRawAxis(4));
+	drivetrain->leftMotor1->Set(-1 * oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0));
+	drivetrain->leftMotor2->Set(-1 * oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0));
+	drivetrain->rightMotor1->Set(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0));
+	drivetrain->rightMotor2->Set(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(0));
 }
 
 bool XBoxDrive::IsFinished()

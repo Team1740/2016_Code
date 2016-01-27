@@ -7,8 +7,7 @@
 class Move: public CommandBase
 {
 public:
-	Move(int, float, double);
-	int angle;
+	Move(float, double);
 	float speed;
 	void Initialize();
 	void Execute();
