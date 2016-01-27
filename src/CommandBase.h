@@ -1,11 +1,11 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
+#include <Subsystems/Arm.h>
 #include <string>
 #include "Commands/Command.h"
 #include "OI.h"
 #include "WPILib.h"
-#include "Subsystems/Utility.h"
 #include "Subsystems/Piston.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/RangeFinder.h"
@@ -27,7 +27,7 @@ public:
 	static DataLogger *datalogger;
 	static DriveTrain *drivetrain;
 	static Piston *piston;
-	static Utility *utility;
+	static Arm *arm;
 	static RangeFinder *rangefinder;
 };
 

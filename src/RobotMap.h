@@ -15,8 +15,8 @@
 #define LEFT_MOTOR_PORT_2 2
 #define RIGHT_MOTOR_PORT_1 1
 #define RIGHT_MOTOR_PORT_2 3
-#define UTILITY_MOTOR_PORT 4
-
+#define LIFTER_MOTOR_PORT 4
+#define EXTENDER_MOTOR_PORT 5
 #define ANGLE_CORRECTION 5; // offsets straight by x degrees clockwise
 
 // Pneumatic port configuration
