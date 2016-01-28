@@ -1,7 +1,6 @@
 #ifndef COMMAND_BASE_H
 #define COMMAND_BASE_H
 
-#include <Subsystems/Arm.h>
 #include <string>
 #include "Commands/Command.h"
 #include "OI.h"
@@ -9,6 +8,7 @@
 #include "Subsystems/Piston.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/RangeFinder.h"
+#include "Subsystems/Arm.h"
 #include "Subsystems/DataLogger.h"
 
 /**

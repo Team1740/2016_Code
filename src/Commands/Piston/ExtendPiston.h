@@ -1,13 +1,13 @@
-#ifndef Out_H
-#define Out_H
+#ifndef ExtendPiston_H
+#define ExtendPiston_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
-class Out: public CommandBase
+class ExtendPiston: public CommandBase
 {
 public:
-	Out();
+	ExtendPiston();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

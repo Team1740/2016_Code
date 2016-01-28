@@ -2,7 +2,7 @@
 #define BasicAuto_H
 
 #include "Commands/CommandGroup.h"
-#include "Move.h"
+#include "../Drivetrain/Move.h"
 #include "WPILib.h"
 
 class BasicAuto: public CommandGroup

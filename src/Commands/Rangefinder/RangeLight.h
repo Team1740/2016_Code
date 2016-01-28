@@ -1,7 +1,7 @@
 #ifndef RANGELIGHT_H
 #define RANGELIGHT_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
 class RangeLight: public CommandBase

@@ -1,6 +1,6 @@
 #include "XBoxDrive.h"
-#include "../RobotMap.h"
-#include "OI.h"
+#include "../../RobotMap.h"
+#include "../../OI.h"
 
 XBoxDrive::XBoxDrive()
 {

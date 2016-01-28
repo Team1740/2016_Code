@@ -1,9 +1,10 @@
 #ifndef Move_H
 #define Move_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
+#include "../../RobotMap.h"
 #include "WPILib.h"
-#include "../RobotMap.h"
+
 class Move: public CommandBase
 {
 public:

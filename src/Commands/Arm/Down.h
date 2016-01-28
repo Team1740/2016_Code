@@ -1,7 +1,7 @@
 #ifndef Down_H
 #define Down_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
 class Down: public CommandBase

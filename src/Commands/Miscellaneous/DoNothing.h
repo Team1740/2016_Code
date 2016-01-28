@@ -1,7 +1,7 @@
 #ifndef DONOTHING_H
 #define DONOTHING_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
 class DoNothing: public CommandBase

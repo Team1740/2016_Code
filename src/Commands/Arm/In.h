@@ -1,13 +1,13 @@
-#ifndef Up_H
-#define Up_H
+#ifndef In_H
+#define In_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
-class Up: public CommandBase
+class In: public CommandBase
 {
 public:
-	Up();
+	In();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

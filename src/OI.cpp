@@ -1,10 +1,10 @@
 #include "OI.h"
-#include "Commands/ExtendPiston.h"
-#include "Commands/RetractPiston.h"
-#include "Commands/Up.h"
-#include "Commands/Down.h"
-#include "Commands/In.h"
-#include "Commands/Out.h"
+#include "Commands/Piston/ExtendPiston.h"
+#include "Commands/Piston/RetractPiston.h"
+#include "Commands/Arm/Up.h"
+#include "Commands/Arm/Down.h"
+#include "Commands/Arm/In.h"
+#include "Commands/Arm/Out.h"
 
 OI::OI()
 {

@@ -1,11 +1,11 @@
 #include "WPILib.h"
-#include "Commands/BasicAuto.h"
-#include "Commands/DoNothing.h"
+#include "Commands/Autonomous/BasicAuto.h"
+#include "Commands/Miscellaneous/DoNothing.h"
 #include "Commands/Command.h"
-#include "Commands/Move.h"
-#include "Commands/StandardTankDrive.h"
-#include "Commands/ThreeAxisTankDrive.h"
-#include "Commands/XBoxDrive.h"
+#include "Commands/Drivetrain/Move.h"
+#include "Commands/Drivetrain/StandardTankDrive.h"
+#include "Commands/Drivetrain/ThreeAxisTankDrive.h"
+#include "Commands/Drivetrain/XBoxDrive.h"
 #include "CommandBase.h"
 
 

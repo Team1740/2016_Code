@@ -1,13 +1,13 @@
-#ifndef RetractPiston_H
-#define RetractPiston_H
+#ifndef Out_H
+#define Out_H
 
-#include "../CommandBase.h"
+#include "../../CommandBase.h"
 #include "WPILib.h"
 
-class RetractPiston: public CommandBase
+class Out: public CommandBase
 {
 public:
-	RetractPiston();
+	Out();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
