@@ -29,6 +29,6 @@ void Down::End()
 
 void Down::Interrupted()
 {
-	datalogger->Log("Down::Interrupted", STATUS_MESSAGE);
+	datalogger->Log("Down::Interrupted()", STATUS_MESSAGE);
 	arm->extender_motor->Set(0);
 }

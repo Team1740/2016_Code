@@ -29,6 +29,6 @@ void Up::End()
 
 void Up::Interrupted()
 {
-	datalogger->Log("Up::Interrupted", STATUS_MESSAGE);
+	datalogger->Log("Up::Interrupted()", STATUS_MESSAGE);
 	arm->extender_motor->Set(0);
 }

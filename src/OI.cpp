@@ -3,6 +3,8 @@
 #include "Commands/RetractPiston.h"
 #include "Commands/Up.h"
 #include "Commands/Down.h"
+#include "Commands/In.h"
+#include "Commands/Out.h"
 
 OI::OI()
 {
@@ -22,9 +24,16 @@ OI::OI()
 	threeAxis4 = new JoystickButton(threeAxisJoystick, 4);
 	threeAxis5 = new JoystickButton(threeAxisJoystick, 5);
 	threeAxis6 = new JoystickButton(threeAxisJoystick, 6);
+	NESStart = new JoystickButton(NESController, 1);
+	NESSelect = new JoystickButton(NESController, 2);
+	NESB = new JoystickButton(NESController, 9);
+	NESA = new JoystickButton(NESController, 10);
+
 
 	threeAxis3->WhenPressed(new ExtendPiston());
 	threeAxis4->WhenPressed(new RetractPiston());
-	threeAxis5->WhileHeld(new Up());
-	threeAxis6->WhileHeld(new Down());
+	NESStart->WhileHeld(new Up());
+	NESSelect->WhileHeld(new Down());
+	NESB->WhileHeld(new Out());
+	NESA->WhileHeld(new In());
 }

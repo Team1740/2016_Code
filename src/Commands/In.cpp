@@ -7,6 +7,7 @@ In::In()
 
 void In::Initialize()
 {
+	datalogger->Log("In::Initialize()", STATUS_MESSAGE);
 	arm->extender_motor->Set(-1.0);
 }
 
@@ -22,10 +23,12 @@ bool In::IsFinished()
 
 void In::End()
 {
+	datalogger->Log("In::End()", ERROR_MESSAGE);
 	arm->extender_motor->Set(0);
 }
 
 void In::Interrupted()
 {
+	datalogger->Log("In::Interrupted()", STATUS_MESSAGE);
 	arm->extender_motor->Set(0);
 }

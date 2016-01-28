@@ -19,6 +19,10 @@ public:
 	JoystickButton *threeAxis4;
 	JoystickButton *threeAxis5;
 	JoystickButton *threeAxis6;
+	JoystickButton *NESStart;
+	JoystickButton *NESSelect;
+	JoystickButton *NESB;
+	JoystickButton *NESA;
 };
 
 #endif
