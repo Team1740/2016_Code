@@ -1,6 +1,7 @@
 #include "WPILib.h"
 #include "Commands/Autonomous/BasicAuto.h"
 #include "Commands/Miscellaneous/DoNothing.h"
+#include "Commands/Autonomous/DriveThroughObstacle.h"
 #include "Commands/Command.h"
 #include "Commands/Drivetrain/Move.h"
 #include "Commands/Drivetrain/StandardTankDrive.h"
@@ -41,17 +42,15 @@ private:
 
 		drivemodechooser = new SendableChooser();
 		drivemodechooser->AddObject("Standard Tank Drive", new StandardTankDrive());
-		drivemodechooser->AddDefault("3 Axis Tank Drive (1 Joystick)", new ThreeAxisTankDrive());
-		drivemodechooser->AddObject("3 Axis Xbox Drive", new XBoxDrive());
+		drivemodechooser->AddDefault("3 Axis Tank Drive", new ThreeAxisTankDrive());
+		drivemodechooser->AddObject("Xbox Tank Drive", new XBoxDrive());
 		SmartDashboard::PutData("Drive Mode", drivemodechooser);
 
 //		->Log("added objects", VERBOSE_MESSAGE);
 		autonomouschooser = new SendableChooser();
 		autonomouschooser->AddObject("Basic Auto: Drive Forward", new BasicAuto());
-
-//		autonomouschooser->AddObject("Testing move", new Move(270, .3, 5));
+		autonomouschooser->AddObject("Drive Through Obstacle", new DriveThroughObstacle());
 		autonomouschooser->AddDefault("Do Nothing", new DoNothing(15));
-//		autonomouschooser->AddObject("Yellow Totes", new YellowToteAuto());
 		SmartDashboard::PutData("Autonomous", autonomouschooser);
 
 		lw = LiveWindow::GetInstance();

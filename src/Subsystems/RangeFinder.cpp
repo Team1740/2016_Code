@@ -7,10 +7,8 @@
 RangeFinder::RangeFinder() :
 	Subsystem("RangeFinder")
 {
-	rangefinder_bottom = new Ultrasonic(6,7);
-	rangefinder_top = new Ultrasonic(8,9);
-	rangefinder_top->SetAutomaticMode(true);
-	rangefinder_bottom->SetAutomaticMode(true);
+	rangefinder = new Ultrasonic(6,7);
+	rangefinder->SetAutomaticMode(true);
 	light = new Relay(LIGHT_BAR_RELAY_PORT);
 }
 
