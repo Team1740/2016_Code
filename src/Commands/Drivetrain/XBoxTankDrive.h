@@ -1,14 +1,13 @@
-#ifndef XBOXDRIVE_H
-#define XBOXDRIVE_H
+#ifndef XBOXTANKDRIVE_H
+#define XBOXTANKDRIVE_H
 
 #include "../../CommandBase.h"
 #include "WPILib.h"
 
-class XBoxDrive: public CommandBase
+class XBoxTankDrive: public CommandBase
 {
-private:
 public:
-	XBoxDrive();
+	XBoxTankDrive();
 	void Initialize();
 	void Execute();
 	bool IsFinished();

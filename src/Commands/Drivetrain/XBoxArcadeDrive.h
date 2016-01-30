@@ -1,20 +1,18 @@
-#ifndef DriveUntilRange_H
-#define DriveUntilRange_H
+#ifndef XBoxArcadeDrive_H
+#define XBoxArcadeDrive_H
 
 #include "../../CommandBase.h"
 #include "WPILib.h"
 
-class DriveUntilRange: public CommandBase
+class XBoxArcadeDrive: public CommandBase
 {
 public:
-	DriveUntilRange(float, float);
+	XBoxArcadeDrive();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	float speed;
-	float range;
 };
 
 #endif
