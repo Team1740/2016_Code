@@ -4,10 +4,10 @@
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 {
-	leftMotor1 = new TalonSRX(LEFT_MOTOR_PORT_1);
-	leftMotor2 = new TalonSRX(LEFT_MOTOR_PORT_2);
-	rightMotor1 = new TalonSRX(RIGHT_MOTOR_PORT_1);
-	rightMotor2 = new TalonSRX(RIGHT_MOTOR_PORT_2);
+	leftMotor1 = new TalonSRX(LEFT_MOTOR_1_ID);
+	leftMotor2 = new TalonSRX(LEFT_MOTOR_2_ID);
+	rightMotor1 = new TalonSRX(RIGHT_MOTOR_1_ID);
+	rightMotor2 = new TalonSRX(RIGHT_MOTOR_2_ID);
 }
 
 void DriveTrain::Go(float leftSpeed, float rightSpeed)

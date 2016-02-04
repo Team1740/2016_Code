@@ -11,13 +11,12 @@
  */
  
  // drivetrain motors go here, currently set up to assume 4 motor
-#define LEFT_MOTOR_PORT_1 0
-#define LEFT_MOTOR_PORT_2 2
-#define RIGHT_MOTOR_PORT_1 1
-#define RIGHT_MOTOR_PORT_2 3
-#define LIFTER_MOTOR_PORT 4
-#define EXTENDER_MOTOR_PORT 5
-#define ANGLE_CORRECTION 5; // offsets straight by x degrees clockwise
+#define LEFT_MOTOR_1_ID 0
+#define LEFT_MOTOR_2_ID 1
+#define RIGHT_MOTOR_1_ID 2
+#define RIGHT_MOTOR_2_ID 3
+#define LIFTER_MOTOR_ID 4
+#define EXTENDER_MOTOR_ID 5
 
 // Pneumatic port configuration
 #define CYLINDER_PORT_0 0 // Gripper solenoid wired to port 0 on pneumatic break-out card
