@@ -8,7 +8,7 @@ ExtendPiston::ExtendPiston()
 void ExtendPiston::Initialize()
 {
 	datalogger->Log("ExtendPiston::Initialize()", DEBUG_MESSAGE);
-	piston->Extend();
+//	piston->Extend();
 }
 
 void ExtendPiston::Execute()

@@ -10,7 +10,7 @@ class Arm: public Subsystem
 {
 public:
 	CANTalon *lifter_motor;
-	TalonSRX *extender_motor;
+	CANTalon *extender_motor;
 	Arm();
 };
 

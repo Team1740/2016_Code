@@ -19,7 +19,8 @@ void DriveUntilRange::Execute()
 
 bool DriveUntilRange::IsFinished()
 {
-	return rangefinder->rangefinder->GetRangeInches() >= range;
+//	return rangefinder->rangefinder->GetRangeInches() >= range;
+	return false;
 }
 
 void DriveUntilRange::End()

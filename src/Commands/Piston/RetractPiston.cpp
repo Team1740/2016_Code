@@ -8,7 +8,7 @@ RetractPiston::RetractPiston()
 void RetractPiston::Initialize()
 {
 	datalogger->Log("RetractPiston::Initialize()", DEBUG_MESSAGE);
-	piston->Retract();
+//	piston->Retract();
 }
 
 void RetractPiston::Execute()

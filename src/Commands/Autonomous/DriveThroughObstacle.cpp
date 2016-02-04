@@ -5,5 +5,5 @@
 DriveThroughObstacle::DriveThroughObstacle()
 {
 	AddSequential(new Move(1.0, 3));
-	AddSequential(new DriveUntilRange(1.0, 12));
+//	AddSequential(new DriveUntilRange(1.0, 12));
 }

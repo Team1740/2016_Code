@@ -13,7 +13,7 @@ void RangeLight::Initialize()
 
 void RangeLight::Execute()
 {
-
+/*
 	if (rangefinder->rangefinder->GetRangeInches() < 11)
 	{
 		rangefinder->Light(1);
@@ -22,6 +22,7 @@ void RangeLight::Execute()
 		rangefinder->Light(0);
 	}
 	SmartDashboard::PutNumber("Range:", rangefinder->rangefinder->GetRangeInches());
+*/
 }
 
 bool RangeLight::IsFinished()

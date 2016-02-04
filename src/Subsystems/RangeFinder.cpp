@@ -7,24 +7,24 @@
 RangeFinder::RangeFinder() :
 	Subsystem("RangeFinder")
 {
-	rangefinder = new Ultrasonic(6,7);
-	rangefinder->SetAutomaticMode(true);
-	light = new Relay(LIGHT_BAR_RELAY_PORT);
+//	rangefinder = new Ultrasonic(6,7);
+//	rangefinder->SetAutomaticMode(true);
+//	light = new Relay(LIGHT_BAR_RELAY_PORT);
 }
 
 void RangeFinder::InitDefaultCommand()
 {
-	SetDefaultCommand(new RangeLight());
+//	SetDefaultCommand(new RangeLight());
 }
 
 void RangeFinder::Light(unsigned int state)
 {
 	if (state)
 	{
-		light->Set(Relay::kForward);
+//		light->Set(Relay::kForward);
 	}
 	else
 	{
-		light->Set(Relay::kOff);
+//		light->Set(Relay::kOff);
 	}
 }

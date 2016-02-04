@@ -9,8 +9,8 @@
 class Piston: public Subsystem
 {
 private:
-	Solenoid *s0;
-	Solenoid *s1;
+//	Solenoid *s0;
+//	Solenoid *s1;
 public:
 	Piston();
 	bool isOpen;
