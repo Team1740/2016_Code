@@ -3,7 +3,8 @@
 #include "CommandBase.h"
 #include "Commands/Miscellaneous/DoNothing.h"
 #include "Commands/Autonomous/BasicAuto.h"
-#include "Commands/Autonomous/DriveThroughObstacle.h"
+#include "Commands/Autonomous/DriveToGoal.h"
+#include "Commands/Autonomous/GyroTest.h"
 #include "Commands/Drivetrain/StandardTankDrive.h"
 #include "Commands/Drivetrain/ThreeAxisTankDrive.h"
 #include "Commands/Drivetrain/XBoxArcadeDrive.h"
@@ -35,7 +36,8 @@ private:
 		autonomouschooser = new SendableChooser();
 		autonomouschooser->AddDefault("Do Nothing", new DoNothing(15));
 		autonomouschooser->AddObject("Basic Auto: Drive Forward", new BasicAuto());
-		autonomouschooser->AddObject("Drive Through Obstacle", new DriveThroughObstacle());
+		autonomouschooser->AddObject("Drive To Goal", new DriveToGoal());
+		autonomouschooser->AddObject("Gyro Test", new GyroTest());
 		SmartDashboard::PutData("Autonomous", autonomouschooser);
 
 		lw = LiveWindow::GetInstance();

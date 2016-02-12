@@ -1,4 +1,5 @@
 #include "OI.h"
+#include "Commands/Drivetrain/EncoderTest.h"
 #include "Commands/Piston/ExtendPiston.h"
 #include "Commands/Piston/RetractPiston.h"
 #include "Commands/Arm/Up.h"
@@ -20,6 +21,7 @@ OI::OI()
 	// Joystick 0 is the launchpad
 	launchPad = new Joystick(0);
 
+	threeAxis1 = new JoystickButton(threeAxisJoystick, 1);
 	threeAxis3 = new JoystickButton(threeAxisJoystick, 3);
 	threeAxis4 = new JoystickButton(threeAxisJoystick, 4);
 	threeAxis5 = new JoystickButton(threeAxisJoystick, 5);
@@ -30,6 +32,7 @@ OI::OI()
 	NESA = new JoystickButton(NESController, 1);
 
 
+	threeAxis1->WhenPressed(new EncoderTest(125));
 //	threeAxis3->WhenPressed(new ExtendPiston());
 //	threeAxis4->WhenPressed(new RetractPiston());
 	threeAxis5->WhileHeld(new Up());
