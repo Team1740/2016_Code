@@ -13,7 +13,7 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	const float kP = 0.3;
+	const float kP = 0.1;
 };
 
 #endif
