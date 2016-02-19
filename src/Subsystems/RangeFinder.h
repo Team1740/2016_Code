@@ -11,12 +11,11 @@
 class RangeFinder: public Subsystem
 {
 private:
-	Relay *light;
+//	Relay *light;
 public:
 	RangeFinder();
 	void InitDefaultCommand();
-	Ultrasonic *rangefinder_bottom;
-	Ultrasonic *rangefinder_top;
+//	Ultrasonic *rangefinder;
 	void Light(unsigned int);
 };
 

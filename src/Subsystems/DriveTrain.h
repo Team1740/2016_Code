@@ -6,10 +6,10 @@
 class DriveTrain: public Subsystem
 {
 public:
-	TalonSRX *leftMotor1;
-	TalonSRX *leftMotor2;
-	TalonSRX *rightMotor1;
-	TalonSRX *rightMotor2;
+	CANTalon *leftMotor1;
+	CANTalon *leftMotor2;
+	CANTalon *rightMotor1;
+	CANTalon *rightMotor2;
 	DriveTrain();
 	void Go(float, float);
 	void Stop();
