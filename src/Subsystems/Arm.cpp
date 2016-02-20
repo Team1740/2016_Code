@@ -5,9 +5,8 @@ Arm::Arm(): Subsystem("Arm")
 {
 	lifterMotor = new CANTalon(LIFTER_MOTOR_ID);
 	extenderMotor = new CANTalon(EXTENDER_MOTOR_ID);
-	lifterEncoder = new Encoder(LIFTER_ENCODER_PORT_4, LIFTER_ENCODER_PORT_5);
-	extenderEncoder = new Encoder(EXTENDER_ENCODER_PORT_6, EXTENDER_ENCODER_PORT_7);
+	armEncoder = new Encoder(ARM_ENCODER_PORT_0, ARM_ENCODER_PORT_1);
 	armCamera = new USBCamera("cam0", true);
-	lifterEncoder->Reset();
-	extenderEncoder->Reset();
+	armCamera->OpenCamera();
+	armCamera->StartCapture();
 }
