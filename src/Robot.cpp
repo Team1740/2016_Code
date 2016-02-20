@@ -2,15 +2,15 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous/DoNothing.h"
-#include "Commands/Autonomous/RoughTerrain.h"
-#include "Commands/Autonomous/LowBar.h"
+#include "Commands/Autonomous/BasicAuto.h"
+#include "Commands/Autonomous/DriveToGoal.h"
 #include "Commands/Autonomous/EncoderTest.h"
 #include "Commands/Autonomous/GyroTest.h"
 #include "Commands/Drive_Modes/StandardTankDrive.h"
 #include "Commands/Drive_Modes/ThreeAxisTankDrive.h"
 #include "Commands/Drive_Modes/XBoxArcadeDrive.h"
 #include "Commands/Drive_Modes/XBoxTankDrive.h"
-
+#include "Commands/Arm/ArmControl.h"
 class CommandBasedRobot : public IterativeRobot {
 private:
 	// TODO can i initialize a pointer to datalogger here?
@@ -36,8 +36,8 @@ private:
 //		->Log("added objects", VERBOSE_MESSAGE);
 		autonomouschooser = new SendableChooser();
 		autonomouschooser->AddDefault("Do Nothing", new DoNothing(15));
-		autonomouschooser->AddObject("Rough Terrain", new RoughTerrain(1000));
-		autonomouschooser->AddObject("Low Bar", new LowBar());
+		autonomouschooser->AddObject("Basic Auto: Drive Forward", new BasicAuto());
+		autonomouschooser->AddObject("Drive To Goal", new DriveToGoal());
 		autonomouschooser->AddObject("Encoder Test", new EncoderTest(125));
 		autonomouschooser->AddObject("Gyro Test", new GyroTest());
 		SmartDashboard::PutData("Autonomous", autonomouschooser);
@@ -69,6 +69,8 @@ private:
 	{
 //		->Log("Entering TeleopInit()", STATUS_MESSAGE);
 //		autonomousCommand->Cancel();
+		teleopcommand = new ArmControl();
+		teleopcommand->Start();
 		teleopcommand = (Command *) drivemodechooser->GetSelected();
 		teleopcommand->Start();
 //		->End();
@@ -77,6 +79,7 @@ private:
 	virtual void TeleopPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+
 	}
 
 	virtual void TestPeriodic()
