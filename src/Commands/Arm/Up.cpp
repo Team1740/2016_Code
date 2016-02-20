@@ -9,8 +9,8 @@ void Up::Initialize()
 {
 	datalogger->Log("Up::Initialize()", STATUS_MESSAGE);
 	arm->lifterMotor->Set(SPEED);
-	
-	
+
+
 }
 
 void Up::Execute()
@@ -27,7 +27,7 @@ void Up::End()
 {
 	datalogger->Log("Up::End()", ERROR_MESSAGE);
 	arm->lifterMotor->Set(0);
-	
+
 }
 
 void Up::Interrupted()
