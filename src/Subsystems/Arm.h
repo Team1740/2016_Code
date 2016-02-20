@@ -11,8 +11,7 @@ class Arm: public Subsystem
 public:
 	CANTalon *lifterMotor;
 	CANTalon *extenderMotor;
-	Encoder *lifterEncoder;
-	Encoder *extenderEncoder;
+	Encoder *armEncoder;
 	USBCamera *armCamera;
 	Arm();
 };
