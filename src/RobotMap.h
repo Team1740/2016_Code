@@ -8,8 +8,8 @@
 #define LEFT_MOTOR_2_ID 5
 #define RIGHT_MOTOR_1_ID 2
 #define RIGHT_MOTOR_2_ID 3
-#define LIFTER_MOTOR_ID 1
-#define EXTENDER_MOTOR_ID 6
+#define LIFTER_MOTOR_ID 6
+#define EXTENDER_MOTOR_ID 1
 
 // Motor inputs
 #define LEFT_FORWARD -1
