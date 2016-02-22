@@ -12,10 +12,22 @@ void StandardTankDrive::Initialize()
 void StandardTankDrive::Execute()
 {
 	datalogger->Log("StandardTankDrive::Execute()", VERBOSE_MESSAGE);
-	drivetrain->leftMotor1->Set(-1 * oi->tankDriveJoystickLeft->GetY());
-	drivetrain->leftMotor2->Set(-1 * oi->tankDriveJoystickLeft->GetY());
-	drivetrain->rightMotor1->Set(oi->tankDriveJoystickRight->GetY());
-	drivetrain->rightMotor2->Set(oi->tankDriveJoystickRight->GetY());
+	if(not oi->left1->Get() and not oi->right1->Get())
+	{
+		drivetrain->Go(oi->tankDriveJoystickLeft->GetY(), oi->tankDriveJoystickRight->GetY());
+	}
+	else if(oi->left1->Get() and not oi->right1->Get())
+	{
+		drivetrain->Go(-1 * oi->tankDriveJoystickLeft->GetY(), -1 * oi->tankDriveJoystickRight->GetY());
+	}
+	else if(not oi->left1->Get() and oi->right1->Get())
+	{
+		drivetrain->Go(0.5 * oi->tankDriveJoystickLeft->GetY(), 0.5 * oi->tankDriveJoystickRight->GetY());
+	}
+	else if(oi->left1->Get() and oi->right1->Get())
+	{
+		drivetrain->Go(-0.5 * oi->tankDriveJoystickLeft->GetY(), -0.5 * oi->tankDriveJoystickRight->GetY());
+	}
 }
 
 bool StandardTankDrive::IsFinished()

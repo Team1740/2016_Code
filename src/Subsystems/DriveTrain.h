@@ -15,6 +15,8 @@ public:
 	AnalogGyro *steeringGyro;
 	DriveTrain();
 	void Go(float, float);
+	void Forward(float);
+	void Reverse(float);
 	void Stop();
 };
 

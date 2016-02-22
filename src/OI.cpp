@@ -20,6 +20,8 @@ OI::OI()
 	// Joystick 0 is the launchpad
 	launchPad = new Joystick(0);
 
+	left1 = new JoystickButton(tankDriveJoystickLeft, 1);
+	right1 = new JoystickButton(tankDriveJoystickRight, 1);
 	threeAxis1 = new JoystickButton(threeAxisJoystick, 1);
 	threeAxis3 = new JoystickButton(threeAxisJoystick, 3);
 	threeAxis4 = new JoystickButton(threeAxisJoystick, 4);
@@ -29,12 +31,4 @@ OI::OI()
 	NESSelect = new JoystickButton(NESController, 9);
 	NESB = new JoystickButton(NESController, 2);
 	NESA = new JoystickButton(NESController, 1);
-
-
-//	threeAxis3->WhenPressed(new ExtendPiston()); //pneumatic piston
-//	threeAxis4->WhenPressed(new RetractPiston()); // pneumatic piston
-//	threeAxis5->WhileHeld(new Up());
-//	threeAxis6->WhileHeld(new Down());
-//	threeAxis3->WhileHeld(new Out());
-//	threeAxis4->WhileHeld(new In());
 }

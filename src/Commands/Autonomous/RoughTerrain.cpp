@@ -8,7 +8,7 @@ RoughTerrain::RoughTerrain(int distance)
 
 void RoughTerrain::Initialize()
 {
-	drivetrain->Go(LEFT_FORWARD, RIGHT_FORWARD);
+	drivetrain->Forward(0.5);
 }
 
 void RoughTerrain::Execute()

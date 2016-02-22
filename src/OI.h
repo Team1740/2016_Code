@@ -15,6 +15,8 @@ public:
 	Joystick *xboxController;
 	Joystick *NESController;
 	Joystick *launchPad;
+	JoystickButton *left1;
+	JoystickButton *right1;
 	JoystickButton *threeAxis1;
 	JoystickButton *threeAxis3;
 	JoystickButton *threeAxis4;
