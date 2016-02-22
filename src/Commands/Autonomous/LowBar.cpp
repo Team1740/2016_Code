@@ -1,9 +1,10 @@
 #include "LowBar.h"
 #include "../Drivetrain/Move.h"
+#include "../Arm/Down.h"
+#include "RoughTerrain.h"
 
 LowBar::LowBar()
 {
-	//Lower arm
-	//Drive until encoder count
-	//Stop
+	AddSequential(new Down());
+	AddSequential(new RoughTerrain(1000));
 }

@@ -14,10 +14,22 @@ void XBoxArcadeDrive::Initialize()
 
 void XBoxArcadeDrive::Execute(){
 	datalogger->Log("XBoxDrive::Execute()", VERBOSE_MESSAGE);
-	drivetrain->leftMotor1->Set(-1 * oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4));
-	drivetrain->leftMotor2->Set(-1 * oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4));
-	drivetrain->rightMotor1->Set(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4));
-	drivetrain->rightMotor2->Set(oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4));
+	if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	{
+		drivetrain->Go(oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+	}
+	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	{
+		drivetrain->Go(-1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+	}
+	else if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) > 0.5)
+	{
+		drivetrain->Go(0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), 0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+	}
+	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	{
+		drivetrain->Go(-0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+	}
 }
 
 bool XBoxArcadeDrive::IsFinished()

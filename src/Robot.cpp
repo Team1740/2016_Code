@@ -2,10 +2,10 @@
 #include "Commands/Command.h"
 #include "CommandBase.h"
 #include "Commands/Autonomous/DoNothing.h"
-#include "Commands/Autonomous/BasicAuto.h"
-#include "Commands/Autonomous/DriveToGoal.h"
 #include "Commands/Autonomous/EncoderTest.h"
 #include "Commands/Autonomous/GyroTest.h"
+#include "Commands/Autonomous/LowBar.h"
+#include "Commands/Autonomous/RoughTerrain.h"
 #include "Commands/Drive_Modes/StandardTankDrive.h"
 #include "Commands/Drive_Modes/ThreeAxisTankDrive.h"
 #include "Commands/Drive_Modes/XBoxArcadeDrive.h"
@@ -28,7 +28,6 @@ private:
 
 		drivemodechooser = new SendableChooser();
 		drivemodechooser->AddDefault("Standard Tank Drive", new StandardTankDrive());
-		drivemodechooser->AddObject("3 Axis Tank Drive", new ThreeAxisTankDrive());
 		drivemodechooser->AddObject("XBox Tank Drive", new XBoxTankDrive());
 		drivemodechooser->AddObject("XBox Arcade Drive", new XBoxArcadeDrive());
 		SmartDashboard::PutData("Drive Mode", drivemodechooser);
@@ -36,10 +35,10 @@ private:
 //		->Log("added objects", VERBOSE_MESSAGE);
 		autonomouschooser = new SendableChooser();
 		autonomouschooser->AddDefault("Do Nothing", new DoNothing(15));
-		autonomouschooser->AddObject("Basic Auto: Drive Forward", new BasicAuto());
-		autonomouschooser->AddObject("Drive To Goal", new DriveToGoal());
 		autonomouschooser->AddObject("Encoder Test", new EncoderTest(125));
 		autonomouschooser->AddObject("Gyro Test", new GyroTest());
+		autonomouschooser->AddObject("Low Bar", new LowBar());
+		autonomouschooser->AddObject("Rough Terrain, Rock Wall, etc.", new RoughTerrain(1000));
 		SmartDashboard::PutData("Autonomous", autonomouschooser);
 
 		lw = LiveWindow::GetInstance();

@@ -15,10 +15,26 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 
 void DriveTrain::Go(float leftSpeed, float rightSpeed)
 {
-	leftMotor1->Set(leftSpeed);
-	leftMotor2->Set(leftSpeed);
-	rightMotor1->Set(rightSpeed);
-	rightMotor2->Set(rightSpeed);
+	leftMotor1->Set(leftSpeed * LEFT_FORWARD);
+	leftMotor2->Set(leftSpeed * LEFT_FORWARD);
+	rightMotor1->Set(rightSpeed * RIGHT_FORWARD);
+	rightMotor2->Set(rightSpeed * RIGHT_FORWARD);
+}
+
+void DriveTrain::Forward(float speed)
+{
+	leftMotor1->Set(speed * LEFT_FORWARD);
+	leftMotor2->Set(speed * LEFT_FORWARD);
+	rightMotor1->Set(speed * RIGHT_FORWARD);
+	rightMotor2->Set(speed * RIGHT_FORWARD);
+}
+
+void DriveTrain::Reverse(float speed)
+{
+	leftMotor1->Set(speed * LEFT_REVERSE);
+	leftMotor2->Set(speed * LEFT_REVERSE);
+	rightMotor1->Set(speed * RIGHT_REVERSE);
+	rightMotor2->Set(speed * RIGHT_REVERSE);
 }
 
 void DriveTrain::Stop()
