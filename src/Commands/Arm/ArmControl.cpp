@@ -26,15 +26,15 @@ void ArmControl::Execute()
 	}
 	else
 	{
-		if (anglePOV > 180)
-		{
-			// This should be down, so retracting the arm
-			arm->extenderMotor->Set(-1);
-		}
-		else
+		if (anglePOV > -90 && anglePOV < 90)
 		{
 			// This should be up, so extend the arm
 			arm->extenderMotor->Set(1);
+		}
+		else
+		{
+			// This should be down, so retracting the arm
+			arm->extenderMotor->Set(-1);
 		}
 	}
 }

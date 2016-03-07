@@ -3,6 +3,8 @@
 StandardTankDrive::StandardTankDrive()
 {
 	Requires(drivetrain);
+	leftDrive = 0;
+	rightDrive = 0;
 }
 
 void StandardTankDrive::Initialize()
@@ -12,22 +14,19 @@ void StandardTankDrive::Initialize()
 void StandardTankDrive::Execute()
 {
 	datalogger->Log("StandardTankDrive::Execute()", VERBOSE_MESSAGE);
-	if(not oi->left1->Get() and not oi->right1->Get())
+	leftDrive = oi->tankDriveJoystickLeft->GetY();
+	rightDrive = oi->tankDriveJoystickRight->GetY();
+	if(oi->left1->Get())
 	{
-		drivetrain->Go(oi->tankDriveJoystickLeft->GetY(), oi->tankDriveJoystickRight->GetY());
+		leftDrive *= -1;
+		rightDrive *= -1;
 	}
-	else if(oi->left1->Get() and not oi->right1->Get())
+	if(oi->right1->Get())
 	{
-		drivetrain->Go(-1 * oi->tankDriveJoystickLeft->GetY(), -1 * oi->tankDriveJoystickRight->GetY());
+		leftDrive *= 0.5;
+		rightDrive *= 0.5;
 	}
-	else if(not oi->left1->Get() and oi->right1->Get())
-	{
-		drivetrain->Go(0.5 * oi->tankDriveJoystickLeft->GetY(), 0.5 * oi->tankDriveJoystickRight->GetY());
-	}
-	else if(oi->left1->Get() and oi->right1->Get())
-	{
-		drivetrain->Go(-0.5 * oi->tankDriveJoystickLeft->GetY(), -0.5 * oi->tankDriveJoystickRight->GetY());
-	}
+	drivetrain->Go(leftDrive, rightDrive);
 }
 
 bool StandardTankDrive::IsFinished()
