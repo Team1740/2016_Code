@@ -44,8 +44,8 @@ private:
 		lw = LiveWindow::GetInstance();
 //		->Log("Starting robot!", VERBOSE_MESSAGE);
 //		->Flush();
-//		CameraServer::GetInstance()->SetQuality(100);
-//		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+		CameraServer::GetInstance()->SetQuality(100);
+		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
 
 		compressor = new Compressor();
 	}
