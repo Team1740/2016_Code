@@ -3,6 +3,8 @@
 StandardTankDrive::StandardTankDrive()
 {
 	Requires(drivetrain);
+	leftDrive = 0;
+	rightDrive = 0;
 }
 
 void StandardTankDrive::Initialize()
@@ -12,10 +14,19 @@ void StandardTankDrive::Initialize()
 void StandardTankDrive::Execute()
 {
 	datalogger->Log("StandardTankDrive::Execute()", VERBOSE_MESSAGE);
-	drivetrain->leftMotor1->Set(-1 * oi->tankDriveJoystickLeft->GetY());
-	drivetrain->leftMotor2->Set(-1 * oi->tankDriveJoystickLeft->GetY());
-	drivetrain->rightMotor1->Set(oi->tankDriveJoystickRight->GetY());
-	drivetrain->rightMotor2->Set(oi->tankDriveJoystickRight->GetY());
+	leftDrive = oi->tankDriveJoystickLeft->GetY();
+	rightDrive = oi->tankDriveJoystickRight->GetY();
+	if(oi->left1->Get())
+	{
+		leftDrive *= -1;
+		rightDrive *= -1;
+	}
+	if(oi->right1->Get())
+	{
+		leftDrive *= 0.5;
+		rightDrive *= 0.5;
+	}
+	drivetrain->Go(leftDrive, rightDrive);
 }
 
 bool StandardTankDrive::IsFinished()

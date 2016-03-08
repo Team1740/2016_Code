@@ -1,18 +1,19 @@
-#ifndef STANDARDTANKDRIVE_H
-#define STANDARDTANKDRIVE_H
+#ifndef RoughTerrain_H
+#define RoughTerrain_H
 
 #include "../../CommandBase.h"
 #include "WPILib.h"
 
-class StandardTankDrive: public CommandBase
+class RoughTerrain: public CommandBase
 {
 public:
-	StandardTankDrive();
+	RoughTerrain(int);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+	int count;
 };
 
 #endif
