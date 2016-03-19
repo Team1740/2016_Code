@@ -15,6 +15,8 @@ public:
 	void Interrupted();
 	float leftDrive;
 	float rightDrive;
+	bool reverseMode;
+	bool slowMode;
 };
 
 #endif
