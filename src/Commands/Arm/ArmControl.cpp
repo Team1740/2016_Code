@@ -17,19 +17,12 @@ void ArmControl::Initialize()
 void ArmControl::Execute()
 {
 	int anglePOV;
-	int length = arm->extenderEncoder->Get();
 	// This mess is to make sure the arm doesn't extend more than 15 inches past the perimeter of the robot
-	float lengthCorrection = -((length+72.15) * sqrt(-0.00001*(pow(length, 4)-1250*pow(length, 2)+290800)) * cos(29) + 0.001532 * (pow(length, 3)+72.15*pow(length, 2)-625.255*length-1200002)) / (sqrt(-0.00001*(pow(length, 4)-1250*pow(length, 2)+290800)) * cos(29) + 0.001532 * (pow(length, 2)-625.255));
+	//int l = 27.9 - arm->lifterEncoder->Get();
+	//int d = arm->extenderEncoder->Get();
+	//d < -((l+72.15) * sqrt(-0.00001*(pow(l, 4)-1250*pow(l, 2)+290800)) * cos(29) + 0.001532 * (pow(l, 3)+72.15*pow(l, 2)-625.255*l-1200002)) / (sqrt(-0.00001*(pow(l, 4)-1250*pow(l, 2)+290800)) * cos(29) + 0.001532 * (pow(l, 2)-625.255));
 
-	// If the driver tries to move down while the arm is out too far, it won't move
-	if (lengthCorrection > 15)
-	{
-		arm->lifterMotor->Set(oi->threeAxisJoystick->GetY());
-	}
-	else
-	{
-		arm->lifterMotor->Set(0);
-	}
+	arm->lifterMotor->Set(oi->threeAxisJoystick->GetY());
 	anglePOV = oi->threeAxisJoystick->GetPOV();
 	if (anglePOV == -1)
 	{
@@ -46,15 +39,7 @@ void ArmControl::Execute()
 		else
 		{
 			// This should be down, so retract the arm
-			// If the driver tries to extend the arm while it is out too far, it won't move
-			if (lengthCorrection > 15)
-			{
-				arm->extenderMotor->Set(-1);
-			}
-			else
-			{
-				arm->extenderMotor->Set(0);
-			}
+			arm->extenderMotor->Set(-1);
 		}
 	}
 }

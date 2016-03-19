@@ -22,6 +22,10 @@ public:
 	JoystickButton *threeAxis4;
 	JoystickButton *threeAxis5;
 	JoystickButton *threeAxis6;
+	JoystickButton *xboxA;
+	JoystickButton *xboxB;
+	JoystickButton *xboxLB;
+	JoystickButton *xboxRB;
 	JoystickButton *NESStart;
 	JoystickButton *NESSelect;
 	JoystickButton *NESB;

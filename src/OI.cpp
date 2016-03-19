@@ -27,6 +27,10 @@ OI::OI()
 	threeAxis4 = new JoystickButton(threeAxisJoystick, 4);
 	threeAxis5 = new JoystickButton(threeAxisJoystick, 5);
 	threeAxis6 = new JoystickButton(threeAxisJoystick, 6);
+	xboxA = new JoystickButton(xboxController, 1);
+	xboxB = new JoystickButton(xboxController, 2);
+	xboxLB = new JoystickButton(xboxController, 5);
+	xboxRB = new JoystickButton(xboxController, 6);
 	NESStart = new JoystickButton(NESController, 8);
 	NESSelect = new JoystickButton(NESController, 9);
 	NESB = new JoystickButton(NESController, 2);
