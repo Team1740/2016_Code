@@ -13,6 +13,8 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+	float leftDrive;
+	float rightDrive;
 };
 
 #endif

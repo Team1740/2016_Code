@@ -16,12 +16,12 @@ void StandardTankDrive::Execute()
 	datalogger->Log("StandardTankDrive::Execute()", VERBOSE_MESSAGE);
 	leftDrive = oi->tankDriveJoystickLeft->GetY();
 	rightDrive = oi->tankDriveJoystickRight->GetY();
-	if(oi->left1->Get())
+	if(oi->left1->Get()) // left trigger is reverse
 	{
 		leftDrive *= -1;
 		rightDrive *= -1;
 	}
-	if(oi->right1->Get())
+	if(oi->right1->Get()) // right trigger is half speed
 	{
 		leftDrive *= 0.5;
 		rightDrive *= 0.5;
