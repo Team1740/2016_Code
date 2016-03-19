@@ -8,6 +8,8 @@ class XBoxTankDrive: public CommandBase
 {
 public:
 	XBoxTankDrive();
+	float leftDrive;
+	float rightDrive;
 	void Initialize();
 	void Execute();
 	bool IsFinished();

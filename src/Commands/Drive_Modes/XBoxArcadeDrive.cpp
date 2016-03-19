@@ -5,6 +5,8 @@
 XBoxArcadeDrive::XBoxArcadeDrive()
 {
 	Requires(drivetrain);
+	leftDrive = 0;
+	rightDrive = 0;
 }
 
 void XBoxArcadeDrive::Initialize()
@@ -12,24 +14,21 @@ void XBoxArcadeDrive::Initialize()
 	datalogger->Log("XBoxArcadeDrive::Initialize()", STATUS_MESSAGE);
 }
 
-void XBoxArcadeDrive::Execute(){
-	datalogger->Log("XBoxDrive::Execute()", VERBOSE_MESSAGE);
-	if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+void XBoxArcadeDrive::Execute()
+{
+	leftDrive = oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4);
+	rightDrive = oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4);
+	if(oi->xboxController->GetRawAxis(2) > 0.5) // left trigger is reverse
 	{
-		drivetrain->Go(oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		leftDrive *= -1;
+		rightDrive *= -1;
 	}
-	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	if(oi->xboxController->GetRawAxis(3) > 0.5) // right trigger is half speed
 	{
-		drivetrain->Go(-1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		leftDrive *= 0.5;
+		rightDrive *= 0.5;
 	}
-	else if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) > 0.5)
-	{
-		drivetrain->Go(0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), 0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
-	}
-	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
-	{
-		drivetrain->Go(-0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
-	}
+	drivetrain->Go(leftDrive, rightDrive);
 }
 
 bool XBoxArcadeDrive::IsFinished()
