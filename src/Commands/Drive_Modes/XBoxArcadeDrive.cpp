@@ -5,6 +5,10 @@
 XBoxArcadeDrive::XBoxArcadeDrive()
 {
 	Requires(drivetrain);
+	leftDrive = 0;
+	rightDrive = 0;
+	reverseMode = false;
+	slowMode = false;
 }
 
 void XBoxArcadeDrive::Initialize()
@@ -12,24 +16,48 @@ void XBoxArcadeDrive::Initialize()
 	datalogger->Log("XBoxArcadeDrive::Initialize()", STATUS_MESSAGE);
 }
 
-void XBoxArcadeDrive::Execute(){
-	datalogger->Log("XBoxDrive::Execute()", VERBOSE_MESSAGE);
-	if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+void XBoxArcadeDrive::Execute()
+{
+	leftDrive = oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4);
+	rightDrive = oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4);
+	if(oi->xboxB->Get()) // B is reverse
 	{
-		drivetrain->Go(oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		reverseMode = not reverseMode;
+		printf("Toggling reverse mode %d", reverseMode);
 	}
-	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	if(oi->xboxA->Get()) // A is half speed
 	{
-		drivetrain->Go(-1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -1 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		slowMode = not slowMode;
+		printf("Toggling slow mode %d", slowMode);
 	}
-	else if(oi->xboxController->GetRawAxis(2) <= 0.5 and oi->xboxController->GetRawAxis(3) > 0.5)
+	// Bumpers and triggers for small adjustments
+	if(oi->xboxLB->Get())
 	{
-		drivetrain->Go(0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), 0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		leftDrive = 0.5 * LEFT_REVERSE;
 	}
-	else if(oi->xboxController->GetRawAxis(2) > 0.5 and oi->xboxController->GetRawAxis(3) <= 0.5)
+	if(oi->xboxRB->Get())
 	{
-		drivetrain->Go(-0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4), -0.5 * oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4));
+		rightDrive = 0.5 * RIGHT_REVERSE;
 	}
+	if(oi->xboxController->GetRawAxis(2) > 0.5)
+	{
+		leftDrive = 0.5 * LEFT_FORWARD;
+	}
+	if(oi->xboxController->GetRawAxis(3) > 0.5)
+	{
+		rightDrive = 0.5 * RIGHT_FORWARD;
+	}
+	if(reverseMode)
+	{
+		leftDrive *= -1;
+		rightDrive *= -1;
+	}
+	if(slowMode)
+	{
+		leftDrive *= 0.5;
+		rightDrive *= 0.5;
+	}
+	drivetrain->Go(leftDrive, rightDrive);
 }
 
 bool XBoxArcadeDrive::IsFinished()
