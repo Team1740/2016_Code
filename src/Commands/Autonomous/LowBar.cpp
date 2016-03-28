@@ -6,5 +6,5 @@
 LowBar::LowBar()
 {
 	AddSequential(new Down());
-	AddSequential(new RoughTerrain(1000));
+	AddSequential(new RoughTerrain(10000));
 }

@@ -7,13 +7,14 @@
 class RoughTerrain: public CommandBase
 {
 public:
-	RoughTerrain(int);
+	RoughTerrain(long);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	int count;
+	unsigned long count;
+	unsigned int timer;
 };
 
 #endif

@@ -29,6 +29,28 @@ DataLogger::DataLogger() : Subsystem("DataLogger")
 	}
 }
 
+int DataLogger::CreateLog()
+{
+	sprintf(logfile, "/media/sda1/log_%ld.txt", time(0)); // Log file name
+	printf("Creating Log File: %s... ", logfile);
+//	currentTime=time(0);
+	// char now[256];
+//	sprintf(now, "%ld", currentTime);
+//	strcat(logfile, now);
+//	strcat(logfile, ".txt");
+	printf(logfile);
+	fh = fopen(logfile, "w+");
+	if (fh != NULL)
+	{
+		fwrite((void *)"done.\n", sizeof(char), 17, fh);
+		fclose(fh);
+		abort = false; // initialized to true in header file
+		return 0;
+	}
+	return -1;
+
+}
+
 int DataLogger::Log(const char *data, int level)
 {
 

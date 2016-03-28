@@ -11,15 +11,20 @@ void Down::Initialize()
 	arm->lifterMotor->Set(-1.0 * SPEED);
 }
 
-void Down::Execute()
+void Down::Execute() // Every 20 msec
 {
 	return;
 }
 
-bool Down::IsFinished()
+bool Down::IsFinished() // Called right after Execute()
 {
-	return arm->lifterMotor->IsRevLimitSwitchClosed();
+	bool done = arm->lifterMotor->IsRevLimitSwitchClosed();
+	if (done)
+		datalogger->Log("Done", STATUS_MESSAGE);
+//	printf("Done %d", done);
+	return (done);
 }
+
 
 void Down::End()
 {

@@ -13,8 +13,9 @@ public:
 	CANTalon *extenderMotor;
 	Encoder *lifterEncoder;
 	Encoder *extenderEncoder;
-	USBCamera *armCamera;
+//	USBCamera *armCamera;
 	Arm();
+	void InitDefaultCommand();
 };
 
 #endif
