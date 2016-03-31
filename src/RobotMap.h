@@ -11,12 +11,6 @@
 #define LIFTER_MOTOR_ID 6
 #define EXTENDER_MOTOR_ID 1
 
-// Motor inputs
-#define LEFT_FORWARD -1
-#define RIGHT_FORWARD 1
-#define LEFT_REVERSE 1
-#define RIGHT_REVERSE -1
-
 // Digital I/O Ports
 #define LEFT_ENCODER_PORT_2 2
 #define LEFT_ENCODER_PORT_3 3

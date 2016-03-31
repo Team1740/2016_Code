@@ -20,6 +20,11 @@ void XBoxArcadeDrive::Execute()
 {
 	leftDrive = oi->xboxController->GetRawAxis(1) - oi->xboxController->GetRawAxis(4);
 	rightDrive = oi->xboxController->GetRawAxis(1) + oi->xboxController->GetRawAxis(4);
+<<<<<<< HEAD
+
+	/*
+=======
+>>>>>>> refs/remotes/FRC1740/master
 	if(oi->xboxB->Get()) // B is reverse
 	{
 		reverseMode = not reverseMode;
@@ -57,6 +62,8 @@ void XBoxArcadeDrive::Execute()
 		leftDrive *= 0.5;
 		rightDrive *= 0.5;
 	}
+	/* */
+
 	drivetrain->Go(leftDrive, rightDrive);
 }
 

@@ -1,20 +1,18 @@
-#ifndef RoughTerrain_H
-#define RoughTerrain_H
+#ifndef PortculisWedge_H
+#define PortculisWedge_H
 
 #include "../../CommandBase.h"
 #include "WPILib.h"
 
-class RoughTerrain: public CommandBase
+class PortculisWedge: public CommandBase
 {
 public:
-	RoughTerrain(long);
+	PortculisWedge();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	unsigned long count;
-	unsigned int timer;
 };
 
 #endif
