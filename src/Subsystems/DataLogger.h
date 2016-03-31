@@ -19,10 +19,20 @@
 #define STATUS_MESSAGE 2
 #define DEBUG_MESSAGE 3
 #define VERBOSE_MESSAGE 4
-#define DEBUG_LEVEL 4 // Messages with this level or below will be logged
+#define DEBUG_LEVEL 4
+// Messages with this level or below will be logged
 
 class DataLogger: public Subsystem
 {
+
+// Making these static so we don't have to instantiate an object
+
+// static char logfile[256];
+// static char buffer[256];
+// static char bufferPrevious[256];
+// FILE *fh;
+// int abort=true;
+
 private:
 	Timer gameTime;
 	FILE *fh;
@@ -34,6 +44,7 @@ private:
 
 public:
 	DataLogger();
+	int CreateLog();
 	int Log(const char *, int level);
 	void Flush();
 	int End();

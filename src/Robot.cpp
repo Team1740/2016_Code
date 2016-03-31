@@ -16,6 +16,7 @@ private:
 	// TODO can i initialize a pointer to datalogger here?
 	Command *autonomousCommand;
 	Command *teleopcommand;
+	Command *armCommand;
 	LiveWindow *lw;
 	Compressor *compressor;
 	SendableChooser *drivemodechooser;
@@ -28,33 +29,34 @@ private:
 
 		drivemodechooser = new SendableChooser();
 		drivemodechooser->AddDefault("Standard Tank Drive", new StandardTankDrive());
-		drivemodechooser->AddObject("XBox Tank Drive", new XBoxTankDrive());
 		drivemodechooser->AddObject("XBox Arcade Drive", new XBoxArcadeDrive());
+		drivemodechooser->AddObject("XBox Tank Drive", new XBoxTankDrive());
 		SmartDashboard::PutData("Drive Mode", drivemodechooser);
 
 //		->Log("added objects", VERBOSE_MESSAGE);
 		autonomouschooser = new SendableChooser();
 		autonomouschooser->AddDefault("Do Nothing", new DoNothing(15));
-		autonomouschooser->AddObject("Encoder Test", new EncoderTest(125));
-		autonomouschooser->AddObject("Gyro Test", new GyroTest());
+//		autonomouschooser->AddObject("Encoder Test", new EncoderTest(125));
+//		autonomouschooser->AddObject("Gyro Test", new GyroTest());
 		autonomouschooser->AddObject("Low Bar", new LowBar());
-		autonomouschooser->AddObject("Rough Terrain, Rock Wall, etc.", new RoughTerrain(1000));
+		autonomouschooser->AddObject("Rough Terrain, Rock Wall, etc.", new RoughTerrain(6000));
 		SmartDashboard::PutData("Autonomous", autonomouschooser);
 
 		lw = LiveWindow::GetInstance();
-//		->Log("Starting robot!", VERBOSE_MESSAGE);
-//		->Flush();
+		// We don't have a datalogger object yet.
+		//datalogger->Log("Starting robot!", VERBOSE_MESSAGE);
+
+		// No compressor on this 'bot
+//		compressor = new Compressor();
 		CameraServer::GetInstance()->SetQuality(100);
 		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
-
-		compressor = new Compressor();
 	}
 	
 	virtual void AutonomousInit()
 	{
 //		->Log("AutonomousInit()",STATUS_MESSAGE);
 //		->Log("Starting Compressor", STATUS_MESSAGE);
-		compressor->Start();
+//		compressor->Start();
 		autonomousCommand = (Command *) autonomouschooser->GetSelected();
 		autonomousCommand->Start();
 	}
@@ -67,9 +69,11 @@ private:
 	virtual void TeleopInit()
 	{
 //		->Log("Entering TeleopInit()", STATUS_MESSAGE);
-//		autonomousCommand->Cancel();
-		teleopcommand = new ArmControl();
-		teleopcommand->Start();
+		if (autonomousCommand != NULL)
+			autonomousCommand->Cancel();
+		// The correct way to do the following is through the Subsystem's Default Command
+//		armCommand = new ArmControl();
+//		armCommand->Start();
 		teleopcommand = (Command *) drivemodechooser->GetSelected();
 		teleopcommand->Start();
 //		->End();

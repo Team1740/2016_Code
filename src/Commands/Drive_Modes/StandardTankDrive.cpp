@@ -16,6 +16,7 @@ void StandardTankDrive::Execute()
 	datalogger->Log("StandardTankDrive::Execute()", VERBOSE_MESSAGE);
 	leftDrive = oi->tankDriveJoystickLeft->GetY();
 	rightDrive = oi->tankDriveJoystickRight->GetY();
+	/*
 	if(oi->left1->Get()) // left trigger is reverse
 	{
 		leftDrive *= -1;
@@ -26,6 +27,7 @@ void StandardTankDrive::Execute()
 		leftDrive *= 0.5;
 		rightDrive *= 0.5;
 	}
+	/* */
 	drivetrain->Go(leftDrive, rightDrive);
 }
 
